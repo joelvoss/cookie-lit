@@ -1,0 +1,30 @@
+{
+  "name": "cookies-lit",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Joel Voss <mail@joelvoss.com>",
+  "main": "dist/cookies-lit.cjs.js",
+  "module": "dist/cookies-lit.esm.js",
+  "typings": "dist/types/index.d.ts",
+  "scripts": {
+    "build": "jvdx build rollup 'src/index.ts' -f cjs,esm -c",
+    "lint": "jvdx lint",
+    "format": "jvdx format",
+    "test": "jvdx test",
+    "validate": "npm run format && npm run lint && npm run test",
+    "clean": "jvdx clean dist"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.7.7"
+  },
+  "devDependencies": {
+    "@types/jest": "24.0.25",
+    "jvdx": "0.0.11",
+    "typescript": "3.7.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "jvdx pre-commit"
+    }
+  }
+}
