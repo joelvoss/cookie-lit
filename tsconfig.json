@@ -21,11 +21,12 @@
     "noFallthroughCasesInSwitch": true,
 
     /* Module Resolution Options */
+    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
 
     /* Advanced Options */
     "jsx": "react",
-    "target": "es5"
+    "target": "ES6"
   }
 }
