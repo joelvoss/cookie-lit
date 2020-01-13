@@ -8,7 +8,7 @@
   "module": "dist/cookies-lit.esm.js",
   "typings": "dist/types/index.d.ts",
   "scripts": {
-    "build": "BUILD_NAME=CookieLit jvdx build rollup 'src/index.ts' -f umd,cjs,esm -c",
+    "build": "jvdx build rollup 'src/index.ts' -f cjs,esm,umd.min -c",
     "lint": "jvdx lint",
     "format": "jvdx format",
     "test": "jvdx test",
