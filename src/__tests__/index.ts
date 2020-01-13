@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { CookieJar } from '../index';
+import CookieJar from '../index';
 
 function cleanCookies() {
   document.cookie.split(';').forEach(function(c) {
@@ -27,6 +27,15 @@ describe('CookieJar', () => {
     const jar = new CookieJar();
     expect(jar.get()).toEqual({
       client: '1',
+    });
+  });
+
+  it('returns a cookie jar (client / after creation)', () => {
+    const jar = new CookieJar();
+    // We set the cookie after context creation which should also work
+    document.cookie = 'client=after';
+    expect(jar.get()).toEqual({
+      client: 'after',
     });
   });
 
@@ -122,5 +131,28 @@ describe('CookieJar', () => {
       test2: 'value2',
     });
     expect(document.cookie).toEqual('');
+  });
+
+  it('removes a cookie (client)', () => {
+    let jar = new CookieJar();
+    document.cookie = 'remove=me';
+    expect(jar.get()).toEqual({
+      remove: 'me',
+    });
+    // jsdom's document.cookie setter prepends "; "
+    expect(document.cookie).toEqual('; remove=me');
+    jar.remove('remove');
+    expect(jar.get()).toEqual({});
+    expect(document.cookie).toEqual('');
+  });
+
+  it('removes a cookie (server)', () => {
+    let jar = new CookieJar('remove=me');
+    jar.ignoreDocument = true;
+    expect(jar.get()).toEqual({
+      remove: 'me',
+    });
+    jar.remove('remove');
+    expect(jar.get()).toEqual({});
   });
 });

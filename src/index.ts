@@ -1,3 +1,3 @@
-export { CookieJar } from './cookies';
-export * from './types.d';
+import { CookieJar } from './cookies';
+export default CookieJar;
 export * from './types';
