@@ -1,5 +1,6 @@
 {
   "name": "cookies-lit",
+  "description": "Library for parsing and serialization for server and client side cookies.",
   "version": "0.0.1",
   "license": "MIT",
   "author": "Joel Voss <mail@joelvoss.com>",
@@ -7,7 +8,7 @@
   "module": "dist/cookies-lit.esm.js",
   "typings": "dist/types/index.d.ts",
   "scripts": {
-    "build": "jvdx build rollup 'src/index.ts' -f cjs,esm -c",
+    "build": "BUILD_NAME=CookieLit jvdx build rollup 'src/index.ts' -f umd,cjs,esm -c",
     "lint": "jvdx lint",
     "format": "jvdx format",
     "test": "jvdx test",
@@ -15,7 +16,7 @@
     "clean": "jvdx clean dist"
   },
   "dependencies": {
-    "@babel/runtime": "7.7.7"
+    "@babel/runtime": "7.8.0"
   },
   "devDependencies": {
     "@types/jest": "24.0.25",
