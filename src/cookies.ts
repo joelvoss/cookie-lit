@@ -50,6 +50,7 @@ export class CookieJar {
     }
 
     this.jar = { ...this.jar, ...obj };
+    return str;
   }
 
   remove(name: string, opts?: TSerializeOpts) {

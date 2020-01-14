@@ -89,7 +89,9 @@ describe('CookieJar', () => {
 
   it('sets a cookie (client)', () => {
     let jar = new CookieJar();
-    jar.set('test', 'value');
+    const cookieString = jar.set('test', 'value');
+    expect(cookieString).toEqual('test=value');
+
     expect(jar.get()).toEqual({
       test: 'value',
     });
@@ -100,7 +102,9 @@ describe('CookieJar', () => {
   it('sets a cookie (server)', () => {
     let jar = new CookieJar();
     jar.ignoreDocument = true;
-    jar.set('test', 'value');
+    const cookieString = jar.set('test', 'value');
+    expect(cookieString).toEqual('test=value');
+
     expect(jar.get()).toEqual({
       test: 'value',
     });
@@ -109,9 +113,15 @@ describe('CookieJar', () => {
 
   it('sets multiple cookies (client)', () => {
     let jar = new CookieJar();
-    jar.set('test', 'value');
-    jar.set('test2', 'value2');
-    jar.set('test', 'value3');
+    const cStr0 = jar.set('test', 'value');
+    expect(cStr0).toEqual('test=value');
+
+    const cStr1 = jar.set('test2', 'value2');
+    expect(cStr1).toEqual('test2=value2');
+
+    const cStr2 = jar.set('test', 'value3');
+    expect(cStr2).toEqual('test=value3');
+
     expect(jar.get()).toEqual({
       test: 'value3',
       test2: 'value2',
@@ -123,9 +133,15 @@ describe('CookieJar', () => {
   it('sets multiple cookies (server)', () => {
     let jar = new CookieJar();
     jar.ignoreDocument = true;
-    jar.set('test', 'value');
-    jar.set('test2', 'value2');
-    jar.set('test', 'value3');
+    const cStr0 = jar.set('test', 'value');
+    expect(cStr0).toEqual('test=value');
+
+    const cStr1 = jar.set('test2', 'value2');
+    expect(cStr1).toEqual('test2=value2');
+
+    const cStr2 = jar.set('test', 'value3');
+    expect(cStr2).toEqual('test=value3');
+
     expect(jar.get()).toEqual({
       test: 'value3',
       test2: 'value2',
