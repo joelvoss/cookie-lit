@@ -1,9 +1,17 @@
 {
-  "name": "cookies-lit",
+  "name": "cookie-lit",
   "description": "Library for parsing and serialization for server and client side cookies.",
   "version": "0.0.1",
   "license": "MIT",
   "author": "Joel Voss <mail@joelvoss.com>",
+  "homepage": "https://github.com/joelvoss/cookie-lit",
+  "bugs": {
+    "url": "https://github.com/joelvoss/cookie-lit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelvoss/cookie-lit.git"
+  },
   "main": "dist/cookies-lit.cjs.js",
   "module": "dist/cookies-lit.esm.js",
   "typings": "dist/types/index.d.ts",
