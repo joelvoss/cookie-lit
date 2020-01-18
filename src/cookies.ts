@@ -56,15 +56,16 @@ export class CookieJar {
   remove(name: string, opts?: TSerializeOpts) {
     const deleteOptions = {
       ...opts,
-      expires: new Date(1970, 1, 1, 0, 0, 1),
+      expires: new Date(0),
       maxAge: 0,
     };
+    const { str } = serialize(name, '', deleteOptions);
 
     if (isBrowser() && !this.ignoreDocument) {
-      const { str } = serialize(name, '', deleteOptions);
       document.cookie = str;
     }
 
     delete this.jar[name];
+    return str;
   }
 }

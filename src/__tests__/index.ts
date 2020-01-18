@@ -157,9 +157,12 @@ describe('CookieJar', () => {
     });
     // jsdom's document.cookie setter prepends "; "
     expect(document.cookie).toEqual('; remove=me');
-    jar.remove('remove');
+    const str = jar.remove('remove');
     expect(jar.get()).toEqual({});
     expect(document.cookie).toEqual('');
+    expect(str).toEqual(
+      'remove=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0',
+    );
   });
 
   it('removes a cookie (server)', () => {
@@ -168,7 +171,10 @@ describe('CookieJar', () => {
     expect(jar.get()).toEqual({
       remove: 'me',
     });
-    jar.remove('remove');
+    const str = jar.remove('remove');
     expect(jar.get()).toEqual({});
+    expect(str).toEqual(
+      'remove=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0',
+    );
   });
 });
