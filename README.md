@@ -1,4 +1,4 @@
-# Basic Example
+# cookie-lit
 
 **cookie-lit** is a library for parsing and serialization of server and client
 side cookies. It is heavily inspired by [cookie][@cookie] and
