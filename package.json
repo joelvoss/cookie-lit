@@ -12,14 +12,14 @@
     "type": "git",
     "url": "git+https://github.com/joelvoss/cookie-lit.git"
   },
-  "main": "dist/cookies-lit.cjs.js",
-  "module": "dist/cookies-lit.esm.js",
+  "main": "dist/cookie-lit.cjs.js",
+  "module": "dist/cookie-lit.esm.js",
   "typings": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "jvdx build rollup 'src/index.ts' -f cjs,esm,umd.min -c",
+    "build": "jvdx build rollup 'src/index.ts' -f cjs,esm -c",
     "lint": "jvdx lint",
     "format": "jvdx format",
     "test": "jvdx test",
