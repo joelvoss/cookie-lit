@@ -1,6 +1,6 @@
 {
   "name": "cookie-lit",
-  "description": "Library for parsing and serialization for server and client side cookies.",
+  "description": "Library for serialization and parsing of server and client side cookies.",
   "version": "0.0.1",
   "license": "MIT",
   "author": "Joel Voss <mail@joelvoss.com>",

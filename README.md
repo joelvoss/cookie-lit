@@ -260,7 +260,20 @@ By default this function is the global `decodeURIComponent`.
 
 ### jar.remove(name, options?)
 
-Delete a cookie.
+Delete a cookie from `document.cookie` and the cookie jar.
+The method will return an appropriate Set-Cookie header string to remove
+the cookie.
+
+```js
+jar.set('my-cookie');
+// document.cookie = 'my-cookie=value'
+// jar.get() = '{ "my-cookie": "value" }'
+
+jar.remove('my-cookie');
+// ➞ 'my-cookie=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0'
+// document.cookie = ''
+// jar.get() = '{}'
+```
 
 #### name
 
@@ -270,6 +283,20 @@ The name of the cookie to be deleted.
 
 An optional object containing additional cookie attributes.
 These attributes must match the attributes set on the cookie to be deleted.
+
+```js
+jar.set('my-cookie', 'value', { path: '' });
+
+// This will fail, as the `path` attributes don't match.
+jar.remove('my-cookie');
+
+// This will remove the cookie.
+jar.remove('my-cookie', { path: '' });
+```
+
+> _Note:_
+> Removing a non-existent cookie neither raises any exception nor returns any
+> value.
 
 ---
 
