@@ -27,12 +27,12 @@
     "clean": "jvdx clean dist"
   },
   "dependencies": {
-    "@babel/runtime": "7.8.0"
+    "@babel/runtime": "7.8.3"
   },
   "devDependencies": {
-    "@types/jest": "24.0.25",
-    "jvdx": "0.1.1",
-    "typescript": "3.7.4"
+    "@types/jest": "24.9.0",
+    "jvdx": "0.1.2",
+    "typescript": "3.7.5"
   },
   "husky": {
     "hooks": {
