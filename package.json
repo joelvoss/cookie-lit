@@ -24,7 +24,8 @@
     "format": "jvdx format",
     "test": "jvdx test",
     "validate": "npm run format && npm run lint && npm run test",
-    "clean": "jvdx clean dist"
+    "clean": "jvdx clean dist",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "@babel/runtime": "7.8.3"
