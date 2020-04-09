@@ -1,6 +1,6 @@
 import { ISerialize, IParse } from './types';
 
-export const parse: IParse = function(str, opts = {}) {
+export const parse: IParse = function (str, opts = {}) {
   if (typeof str !== 'string') {
     throw new TypeError('argument str is invalid');
   }
@@ -45,7 +45,7 @@ export const parse: IParse = function(str, opts = {}) {
 // eslint-disable-next-line no-control-regex
 const headerFieldRegExp = new RegExp('^[\u0009\u0020-\u007e\u0080-\u00ff]+$');
 
-export const serialize: ISerialize = function(name, val, opts = {}) {
+export const serialize: ISerialize = function (name, val, opts = {}) {
   if (!opts.encode) {
     opts.encode = encodeURIComponent;
   }

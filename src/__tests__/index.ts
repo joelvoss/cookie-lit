@@ -5,7 +5,7 @@
 import CookieJar from '../index';
 
 function cleanCookies() {
-  document.cookie.split(';').forEach(function(c) {
+  document.cookie.split(';').forEach(function (c) {
     document.cookie = c
       .trim()
       .replace(/=.*/, '=; expires=Thu, 01 Jan 1970 00:00:01 GMT');
