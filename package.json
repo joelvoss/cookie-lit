@@ -28,11 +28,11 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "@babel/runtime": "7.9.2"
+    "@babel/runtime": "7.9.6"
   },
   "devDependencies": {
     "@types/jest": "25.2.1",
-    "jvdx": "1.1.1",
+    "jvdx": "1.2.0",
     "typescript": "3.8.3"
   },
   "husky": {
