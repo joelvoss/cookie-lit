@@ -8,14 +8,24 @@ yarn-debug.log*
 yarn-error.log*
 
 # Dependencies
-/node_modules
+node_modules/
 
 # Testing
-/coverage
+coverage/
+__mocks__/
+__tests__/
+__fixtures__/
+__coverage__/
 
 # Production
-/build
-/dist
+build/
+dist/
+
+# Secrets
+secret/**
+secrets/**
+!secret/.gitkeep
+!secrets/.gitkeep
 
 # Does more harm than good
 package-lock.json
