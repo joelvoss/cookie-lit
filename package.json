@@ -27,9 +27,9 @@
     "@babel/runtime": "7.9.6"
   },
   "devDependencies": {
-    "@types/jest": "25.2.1",
-    "jvdx": "1.2.0",
-    "typescript": "3.8.3"
+    "@types/jest": "25.2.3",
+    "jvdx": "1.4.2",
+    "typescript": "3.9.3"
   },
   "husky": {
     "hooks": {
