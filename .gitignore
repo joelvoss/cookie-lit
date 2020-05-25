@@ -29,4 +29,3 @@ secrets/**
 
 # Does more harm than good
 package-lock.json
-yarn.lock
