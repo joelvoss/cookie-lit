@@ -24,11 +24,11 @@
     "prepublish": "./Taskfile.sh build"
   },
   "dependencies": {
-    "@babel/runtime": "7.9.6"
+    "@babel/runtime": "7.10.2"
   },
   "devDependencies": {
     "@types/jest": "25.2.3",
-    "jvdx": "1.4.2",
+    "jvdx": "1.5.0",
     "typescript": "3.9.3"
   },
   "husky": {
