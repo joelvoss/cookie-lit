@@ -300,7 +300,7 @@ jar.remove('my-cookie', { path: '' });
 
 ---
 
-This project was bootstrapped with [jvdx](https://github.com/joelvoss/jvdx).
+This project was bootstrapped with [@jvdx/core](https://github.com/joelvoss/jvdx-core).
 
 [@cookie]: https://github.com/jshttp/cookie
 [@js-cookie]: https://github.com/js-cookie/js-cookie
