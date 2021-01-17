@@ -26,7 +26,7 @@
     "prepublishOnly": "./Taskfile.sh build"
   },
   "devDependencies": {
-    "@jvdx/core": "^2.1.0"
+    "@jvdx/core": "^2.2.2"
   },
   "prettier": "@jvdx/prettier-config",
   "prettierIgnore": [
