@@ -12,9 +12,14 @@
     "type": "git",
     "url": "git+https://github.com/joelvoss/cookie-lit.git"
   },
+  "type": "module",
   "source": "src/index.ts",
-  "main": "dist/cookie-lit.js",
-  "module": "dist/cookie-lit.es.js",
+  "main": "dist/cookie-lit.cjs",
+  "module": "dist/cookie-lit.module.js",
+  "exports": {
+    "require": "./dist/cookie-lit.cjs",
+    "import": "./dist/cookie-lit.modern.js"
+  },
   "types": "dist/index.d.ts",
   "files": [
     "dist",
