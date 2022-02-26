@@ -30,8 +30,8 @@
     "prepublishOnly": "./Taskfile.sh build"
   },
   "devDependencies": {
-    "@jvdx/core": "^2.9.2",
-    "@types/jest": "^27.0.3"
+    "@jvdx/core": "^2.12.0",
+    "@types/jest": "^27.4.1"
   },
   "prettier": "@jvdx/prettier-config",
   "prettierIgnore": [
