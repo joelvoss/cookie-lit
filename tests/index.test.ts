@@ -95,8 +95,7 @@ describe('CookieJar', () => {
 		expect(jar.get()).toEqual({
 			test: 'value',
 		});
-		// jsdom's document.cookie setter prepends "; "
-		expect(document.cookie).toEqual('; test=value');
+		expect(document.cookie).toEqual('test=value');
 	});
 
 	it('sets a cookie (server)', () => {
@@ -126,8 +125,7 @@ describe('CookieJar', () => {
 			test: 'value3',
 			test2: 'value2',
 		});
-		// jsdom's document.cookie setter prepends "; "
-		expect(document.cookie).toEqual('; test=value3; test2=value2');
+		expect(document.cookie).toEqual('test=value3; test2=value2');
 	});
 
 	it('sets multiple cookies (server)', () => {
@@ -155,8 +153,7 @@ describe('CookieJar', () => {
 		expect(jar.get()).toEqual({
 			remove: 'me',
 		});
-		// jsdom's document.cookie setter prepends "; "
-		expect(document.cookie).toEqual('; remove=me');
+		expect(document.cookie).toEqual('remove=me');
 		const str = jar.remove('remove');
 		expect(jar.get()).toEqual({});
 		expect(document.cookie).toEqual('');
