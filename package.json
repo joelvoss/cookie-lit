@@ -17,6 +17,7 @@
   "main": "dist/cookie-lit.cjs",
   "module": "dist/cookie-lit.module.js",
   "exports": {
+    "types": "./dist/index.d.ts",
     "require": "./dist/cookie-lit.cjs",
     "import": "./dist/cookie-lit.modern.js"
   },
