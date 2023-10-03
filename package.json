@@ -31,9 +31,9 @@
     "prepublishOnly": "./Taskfile.sh build"
   },
   "devDependencies": {
-    "@jvdx/core": "^3.5.0",
-    "@types/jest": "^29.5.3",
-    "jest-environment-jsdom": "^29.6.1"
+    "@jvdx/core": "^3.6.0",
+    "@types/jest": "^29.5.5",
+    "jest-environment-jsdom": "^29.7.0"
   },
   "prettier": "@jvdx/prettier-config",
   "prettierIgnore": [
