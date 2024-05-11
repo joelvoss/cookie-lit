@@ -1,5 +1,5 @@
 export type TSerializeOpts = {
-	encode?: (uriComponent: string | number | boolean) => string;
+	encode?: (uriComponent: string) => string;
 	maxAge?: number;
 	domain?: string;
 	path?: string;
