@@ -1,7 +1,6 @@
-/**
- * @jest-environment jsdom
- */
+// @vitest-environment jsdom
 
+import { describe, beforeEach, expect, test } from 'vitest';
 import CookieJar from '../src/index';
 
 function cleanCookies() {
@@ -17,12 +16,12 @@ describe('CookieJar', () => {
 		cleanCookies();
 	});
 
-	it('returns an empty cookie jar if no cookies are set', () => {
+	test('returns an empty cookie jar if no cookies are set', () => {
 		const jar = new CookieJar();
 		expect(jar.get()).toEqual({});
 	});
 
-	it('returns a cookie jar (client)', () => {
+	test('returns a cookie jar (client)', () => {
 		document.cookie = 'client=1';
 		const jar = new CookieJar();
 		expect(jar.get()).toEqual({
@@ -30,7 +29,7 @@ describe('CookieJar', () => {
 		});
 	});
 
-	it('returns a cookie jar (client / after creation)', () => {
+	test('returns a cookie jar (client / after creation)', () => {
 		const jar = new CookieJar();
 		// We set the cookie after context creation which should also work
 		document.cookie = 'client=after';
@@ -39,7 +38,7 @@ describe('CookieJar', () => {
 		});
 	});
 
-	it('returns a cookie jar (server)', () => {
+	test('returns a cookie jar (server)', () => {
 		let jar = new CookieJar('server=1');
 		jar.ignoreDocument = true;
 		expect(jar.get()).toEqual({
@@ -53,14 +52,14 @@ describe('CookieJar', () => {
 		});
 	});
 
-	it('returns a single cookie by name (client)', () => {
+	test('returns a single cookie by name (client)', () => {
 		document.cookie = 'client=1';
 		document.cookie = 'test=client';
 		const jar = new CookieJar();
 		expect(jar.get('test')).toEqual('client');
 	});
 
-	it('returns a single cookie by name (server)', () => {
+	test('returns a single cookie by name (server)', () => {
 		let jar = new CookieJar('server=1; test=server');
 		jar.ignoreDocument = true;
 		expect(jar.get('test')).toEqual('server');
@@ -70,14 +69,14 @@ describe('CookieJar', () => {
 		expect(jar.get('test')).toEqual('test-object');
 	});
 
-	it('returns undefined if a cookie is missing (client)', () => {
+	test('returns undefined if a cookie is missing (client)', () => {
 		document.cookie = 'client=1';
 		document.cookie = 'test=client';
 		let jar = new CookieJar();
 		expect(jar.get('missing')).toBeUndefined();
 	});
 
-	it('returns undefined if a cookie is missing (server)', () => {
+	test('returns undefined if a cookie is missing (server)', () => {
 		let jar = new CookieJar('server=1; test=server');
 		jar.ignoreDocument = true;
 		expect(jar.get('missing')).toBeUndefined();
@@ -87,7 +86,7 @@ describe('CookieJar', () => {
 		expect(jar.get('missing')).toBeUndefined();
 	});
 
-	it('sets a cookie (client)', () => {
+	test('sets a cookie (client)', () => {
 		let jar = new CookieJar();
 		const cookieString = jar.set('test', 'value');
 		expect(cookieString).toEqual('test=value');
@@ -98,7 +97,7 @@ describe('CookieJar', () => {
 		expect(document.cookie).toEqual('test=value');
 	});
 
-	it('sets a cookie (server)', () => {
+	test('sets a cookie (server)', () => {
 		let jar = new CookieJar();
 		jar.ignoreDocument = true;
 		const cookieString = jar.set('test', 'value');
@@ -110,7 +109,7 @@ describe('CookieJar', () => {
 		expect(document.cookie).toEqual('');
 	});
 
-	it('sets multiple cookies (client)', () => {
+	test('sets multiple cookies (client)', () => {
 		let jar = new CookieJar();
 		const cStr0 = jar.set('test', 'value');
 		expect(cStr0).toEqual('test=value');
@@ -128,7 +127,7 @@ describe('CookieJar', () => {
 		expect(document.cookie).toEqual('test=value3; test2=value2');
 	});
 
-	it('sets multiple cookies (server)', () => {
+	test('sets multiple cookies (server)', () => {
 		let jar = new CookieJar();
 		jar.ignoreDocument = true;
 		const cStr0 = jar.set('test', 'value');
@@ -147,7 +146,7 @@ describe('CookieJar', () => {
 		expect(document.cookie).toEqual('');
 	});
 
-	it('removes a cookie (client)', () => {
+	test('removes a cookie (client)', () => {
 		let jar = new CookieJar();
 		document.cookie = 'remove=me';
 		expect(jar.get()).toEqual({
@@ -162,7 +161,7 @@ describe('CookieJar', () => {
 		);
 	});
 
-	it('removes a cookie (server)', () => {
+	test('removes a cookie (server)', () => {
 		let jar = new CookieJar('remove=me');
 		jar.ignoreDocument = true;
 		expect(jar.get()).toEqual({
