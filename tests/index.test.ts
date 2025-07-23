@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
+/** biome-ignore-all lint/suspicious/noDocumentCookie: . */
 
-import { describe, beforeEach, expect, test } from 'vitest';
+import { beforeEach, describe, expect, test } from 'vitest';
 import CookieJar from '../src/index';
 
 function cleanCookies() {

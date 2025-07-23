@@ -1,23 +1,23 @@
-import { describe, expect, test, vi} from 'vitest';
-import { serialize, parse, isBrowser } from '../src/utils';
+import { describe, expect, test, vi } from 'vitest';
+import { isBrowser, parse, serialize } from '../src/utils';
 
-describe('isBrowser()', () => {	
+describe('isBrowser()', () => {
 	test('detects a browser environment', () => {
 		// @ts-expect-error modify global object
 		global.document = {
-			cookie: 'cookie string'
+			cookie: 'cookie string',
 		};
 		expect(isBrowser()).toBe(true);
 
 		// @ts-expect-error modify global object
 		global.document = {};
 		expect(isBrowser()).toBe(false);
-		
+
 		// @ts-expect-error modify global object
 		global.document = undefined;
 		expect(isBrowser()).toBe(false);
-	})
-})
+	});
+});
 
 describe('serialize()', () => {
 	test('creates a basic cookie string', () => {

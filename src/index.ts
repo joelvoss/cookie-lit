@@ -2,9 +2,9 @@ import {
 	isBrowser,
 	parse,
 	serialize,
-	TJar,
-	TParseOpts,
-	TSerializeOpts,
+	type TJar,
+	type TParseOpts,
+	type TSerializeOpts,
 } from './utils';
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -46,7 +46,7 @@ export default class CookieJar {
 		if (typeof value === 'object') {
 			try {
 				value = JSON.stringify(value);
-			} catch (e) {
+			} catch (_) {
 				throw new TypeError('argument val is invalid');
 			}
 		}
@@ -54,6 +54,7 @@ export default class CookieJar {
 		const { str, obj } = serialize(name, value, opts);
 
 		if (isBrowser() && !this.ignoreDocument) {
+			// biome-ignore lint/suspicious/noDocumentCookie: .
 			document.cookie = str;
 		}
 
@@ -70,6 +71,7 @@ export default class CookieJar {
 		const { str } = serialize(name, '', deleteOptions);
 
 		if (isBrowser() && !this.ignoreDocument) {
+			// biome-ignore lint/suspicious/noDocumentCookie: .
 			document.cookie = str;
 		}
 

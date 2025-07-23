@@ -55,7 +55,7 @@ export function parse(
 		if (obj[key] === undefined) {
 			try {
 				obj[key] = opts.decode(value);
-			} catch (e) {
+			} catch (_) {
 				obj[key] = value;
 			}
 		}
@@ -68,8 +68,8 @@ export function parse(
 
 // RegExp to match a header field content specified in RFC 7230 sec 3.2
 // @see https://tools.ietf.org/html/rfc7230#section-3.2
-// eslint-disable-next-line no-control-regex
-const headerFieldRegExp = new RegExp('^[\u0009\u0020-\u007e\u0080-\u00ff]+$');
+// biome-ignore lint/suspicious/noControlCharactersInRegex: .
+const headerFieldRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
 
 export function serialize(
 	name: string,
@@ -131,7 +131,7 @@ export function serialize(
 
 	if (opts.maxAge != null) {
 		const maxAge = +opts.maxAge; // type-conversion
-		if (isNaN(maxAge)) throw new Error('option maxAge is invalid');
+		if (Number.isNaN(maxAge)) throw new Error('option maxAge is invalid');
 		str += `; Max-Age=${Math.floor(maxAge)}`;
 	}
 
