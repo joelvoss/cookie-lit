@@ -1,4 +1,5 @@
 import { describe, expect, test, vi } from 'vitest';
+
 import { isBrowser, parse, serialize } from '../src/utils';
 
 describe('isBrowser()', () => {
@@ -42,16 +43,16 @@ describe('serialize()', () => {
 	});
 
 	test('creates a basic cookie string with an unencoded value', () => {
-		expect(serialize('test', '- ', { encode: v => v })).toEqual({
+		expect(serialize('test', '- ', { encode: (v) => v })).toEqual({
 			str: 'test=- ',
 			obj: { test: '- ' },
 		});
 	});
 
 	test('throws on unencoded and invalid values', () => {
-		expect(() => serialize('test', 'value\n', { encode: v => v })).toThrowError(
-			'argument val is invalid',
-		);
+		expect(() =>
+			serialize('test', 'value\n', { encode: (v) => v }),
+		).toThrowError('argument val is invalid');
 	});
 
 	test('throws on invalid encode option', () => {
@@ -267,12 +268,12 @@ describe('parse()', () => {
 	});
 
 	test('uses injected decode method', () => {
-		expect(parse('test="value=1&name=cookie+lit"', { decode: v => v })).toEqual(
-			{
-				test: 'value=1&name=cookie+lit',
-			},
-		);
-		expect(parse('test=%20%22%2c%3b%2f', { decode: v => v })).toEqual({
+		expect(
+			parse('test="value=1&name=cookie+lit"', { decode: (v) => v }),
+		).toEqual({
+			test: 'value=1&name=cookie+lit',
+		});
+		expect(parse('test=%20%22%2c%3b%2f', { decode: (v) => v })).toEqual({
 			test: '%20%22%2c%3b%2f',
 		});
 	});

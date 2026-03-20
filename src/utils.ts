@@ -55,7 +55,7 @@ export function parse(
 		if (obj[key] === undefined) {
 			try {
 				obj[key] = opts.decode(value);
-			} catch (_) {
+			} catch {
 				obj[key] = value;
 			}
 		}
@@ -68,7 +68,7 @@ export function parse(
 
 // RegExp to match a header field content specified in RFC 7230 sec 3.2
 // @see https://tools.ietf.org/html/rfc7230#section-3.2
-// biome-ignore lint/suspicious/noControlCharactersInRegex: .
+// oxlint-disable-next-line no-control-regex
 const headerFieldRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
 
 export function serialize(
