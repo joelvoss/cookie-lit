@@ -46,15 +46,18 @@ export default class CookieJar {
 		if (typeof value === 'object') {
 			try {
 				value = JSON.stringify(value);
-			} catch (_) {
-				throw new TypeError('argument val is invalid');
+			} catch (error) {
+				const invalidValueError = Object.assign(
+					new TypeError('argument val is invalid'),
+					{ cause: error },
+				);
+				throw invalidValueError;
 			}
 		}
 
 		const { str, obj } = serialize(name, value, opts);
 
 		if (isBrowser() && !this.ignoreDocument) {
-			// biome-ignore lint/suspicious/noDocumentCookie: .
 			document.cookie = str;
 		}
 
@@ -71,7 +74,6 @@ export default class CookieJar {
 		const { str } = serialize(name, '', deleteOptions);
 
 		if (isBrowser() && !this.ignoreDocument) {
-			// biome-ignore lint/suspicious/noDocumentCookie: .
 			document.cookie = str;
 		}
 
